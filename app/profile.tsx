@@ -1,27 +1,36 @@
-import { StatusBar } from "expo-status-bar";
-import { View, Text, TouchableOpacity } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useFonts } from "expo-font";
 import { Feather } from "@expo/vector-icons";
+import { useFonts } from "expo-font";
 import { useRouter } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import { Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function App() {
   const router = useRouter();
 
   const [fontsLoaded] = useFonts({
-    PoppinsRegular: require("../../assets/fonts/Poppins-Regular.ttf"),
-    PoppinsSemiBold: require("../../assets/fonts/Poppins-SemiBold.ttf"),
-    PoppinsBold: require("../../assets/fonts/Poppins-Bold.ttf"),
+    PoppinsRegular: require("../assets/fonts/Poppins-Regular.ttf"),
+    PoppinsSemiBold: require("../assets/fonts/Poppins-SemiBold.ttf"),
+    PoppinsBold: require("../assets/fonts/Poppins-Bold.ttf"),
   });
 
   if (!fontsLoaded) return null;
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#FFFFFF", paddingHorizontal: 20 }}>
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: "#FFFFFF", paddingHorizontal: 20 }}
+    >
       <StatusBar style="dark" />
 
       {/* HEADER */}
-      <View style={{ flexDirection: "row", alignItems: "center", marginBottom: 20, marginTop: 10 }}>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          marginBottom: 20,
+          marginTop: 10,
+        }}
+      >
         <TouchableOpacity onPress={() => router.back()}>
           <Feather name="arrow-left" size={22} />
         </TouchableOpacity>
@@ -37,7 +46,9 @@ export default function App() {
       </View>
 
       {/* USER INFO */}
-      <View style={{ flexDirection: "row", alignItems: "center", marginBottom: 20 }}>
+      <View
+        style={{ flexDirection: "row", alignItems: "center", marginBottom: 20 }}
+      >
         <View
           style={{
             width: 52,
@@ -49,7 +60,13 @@ export default function App() {
             marginRight: 12,
           }}
         >
-          <Text style={{ color: "#fff", fontSize: 18, fontFamily: "PoppinsSemiBold" }}>
+          <Text
+            style={{
+              color: "#fff",
+              fontSize: 18,
+              fontFamily: "PoppinsSemiBold",
+            }}
+          >
             M
           </Text>
         </View>
@@ -96,7 +113,13 @@ export default function App() {
             }}
           >
             <Feather name={item.icon as any} size={18} />
-            <Text style={{ fontSize: 16, fontFamily: "PoppinsSemiBold", marginTop: 4 }}>
+            <Text
+              style={{
+                fontSize: 16,
+                fontFamily: "PoppinsSemiBold",
+                marginTop: 4,
+              }}
+            >
               {item.value}
             </Text>
             <Text
@@ -149,7 +172,7 @@ export default function App() {
       </View>
 
       {/* MENU */}
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, marginBottom: 5 }}>
         {[
           { label: "Profil", icon: "user" },
           { label: "Notifikasi", icon: "bell" },
@@ -167,7 +190,11 @@ export default function App() {
               borderBottomColor: "#E5E7EB",
             }}
           >
-            <Feather name={item.icon as any} size={18} style={{ color: "#3B82F6" }} />
+            <Feather
+              name={item.icon as any}
+              size={18}
+              style={{ color: "#3B82F6" }}
+            />
             <Text
               style={{
                 marginLeft: 12,
@@ -193,12 +220,11 @@ export default function App() {
             alignItems: "center",
             gap: 8,
           }}
-
           onPress={() => router.push("/welcome")}
         >
           <Feather name="log-out" size={18} color="#EF4444" />
           <Text style={{ color: "#EF4444", fontFamily: "PoppinsSemiBold" }}>
-            Logout
+            Log out
           </Text>
         </TouchableOpacity>
       </View>

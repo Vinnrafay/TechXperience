@@ -1,7 +1,7 @@
-import { Tabs } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/theme";
 import { useColorScheme } from "@/hooks/use-color-scheme";
+import { Ionicons } from "@expo/vector-icons";
+import { Tabs } from "expo-router";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -46,7 +46,7 @@ export default function TabLayout() {
           title: "Reels",
           tabBarIcon: ({ color, size, focused }) => (
             <Ionicons
-              name={focused ? "compass" : "compass-outline"}
+              name={focused ? "play-circle" : "play-circle-outline"}
               size={size + 2}
               color={color}
             />
@@ -55,12 +55,12 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="sertifikat"
+        name="akademi"
         options={{
-          title: "Sertifikat",
+          title: "Akademi",
           tabBarIcon: ({ color, size, focused }) => (
             <Ionicons
-              name={focused ? "ribbon" : "ribbon-outline"}
+              name={focused ? "school" : "school-outline"}
               size={size + 2}
               color={color}
             />
@@ -68,7 +68,21 @@ export default function TabLayout() {
         }}
       />
 
-            <Tabs.Screen
+      <Tabs.Screen
+        name="membership"
+        options={{
+          title: "Membership",
+          tabBarIcon: ({ color, size, focused }) => (
+            <Ionicons
+              name={focused ? "card" : "card-outline"}
+              size={size + 2}
+              color={color}
+            />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
         name="news"
         options={{
           title: "News",
@@ -82,19 +96,8 @@ export default function TabLayout() {
         }}
       />
 
-      <Tabs.Screen
-        name="profile"
-        options={{
-          title: "Profile",
-          tabBarIcon: ({ color, size, focused }) => (
-            <Ionicons
-              name={focused ? "person" : "person-outline"}
-              size={size + 2}
-              color={color}
-            />
-          ),
-        }}
-      />
+      <Tabs.Screen name="profile" options={{ href: null }} />
+      <Tabs.Screen name="sertifikat" options={{ href: null }} />
     </Tabs>
   );
 }

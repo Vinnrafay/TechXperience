@@ -1,7 +1,7 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useRouter } from "expo-router";
 import { useFonts } from "expo-font";
+import { useRouter } from "expo-router";
+import { Image, Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
   const router = useRouter();
@@ -55,8 +55,8 @@ export default function Index() {
             lineHeight: 22,
           }}
         >
-          Belajar di Techxperience ini kamu dapat belajar berbagai bidang teknologi
-          seperti pemrograman, desain grafis, dan jaringan.
+          Belajar di Techxperience ini kamu dapat belajar berbagai bidang
+          teknologi seperti pemrograman, desain grafis, dan jaringan.
         </Text>
 
         <TouchableOpacity
@@ -67,6 +67,7 @@ export default function Index() {
             marginTop: 40,
             width: "100%",
           }}
+          onPress={() => router.push("/(tabs)")}
         >
           <Text
             style={{

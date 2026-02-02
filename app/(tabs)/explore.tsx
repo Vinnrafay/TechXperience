@@ -1,32 +1,38 @@
-import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
-import { AntDesign, Feather } from "@expo/vector-icons";
+import { Feather, Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
+import { ImageBackground, Text, TouchableOpacity, View } from "react-native";
 
 export default function ReelsScreen() {
   const [liked, setLiked] = useState(false);
   const [count, setCount] = useState(0);
 
   const tambahLike = () => {
-    setLiked(true);
-    setCount((prev) => prev + 1);
+    if (liked) {
+      setLiked(false);
+      setCount(0);
+    } else {
+      setLiked(true);
+      setCount(1);
+    }
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: "#000" }}>
       <ImageBackground
         source={require("../../assets/images/image 1.png")}
         style={{ flex: 1 }}
         resizeMode="cover"
       >
-        {/* Search */}
         <View
           style={{
+            position: "absolute",
+            top: 50,
+            left: 25,
             flexDirection: "row",
             alignItems: "center",
-            marginTop: 50,
-            marginLeft: 25,
             backgroundColor: "rgba(83,83,83,0.3)",
-            padding: 8,
+            paddingVertical: 8,
+            paddingHorizontal: 12,
             borderRadius: 10,
             borderWidth: 1,
             borderColor: "#fff",
@@ -39,33 +45,41 @@ export default function ReelsScreen() {
           </Text>
         </View>
 
-        {/* Right Action */}
         <View
           style={{
             position: "absolute",
             right: 16,
             bottom: 160,
             alignItems: "center",
-            gap: 20,
           }}
         >
-          <TouchableOpacity onPress={tambahLike} style={{ alignItems: "center" }}>
-            <AntDesign
-              name="heart"
+          <TouchableOpacity
+            onPress={tambahLike}
+            style={{ alignItems: "center", marginBottom: 20 }}
+          >
+            <Ionicons
+              name={liked ? "heart" : "heart-outline"}
               size={32}
               color={liked ? "#ff0000" : "#ffffff"}
             />
-            <Text style={{ color: "#fff", fontSize: 12 }}>
+            <Text style={{ color: "#fff", fontSize: 12, marginTop: 4 }}>
               {count}
             </Text>
           </TouchableOpacity>
 
-          <Feather name="message-circle" size={24} color="#fff" />
-          <Feather name="send" size={24} color="#fff" />
-          <Feather name="bookmark" size={24} color="#fff" />
+          <TouchableOpacity style={{ marginBottom: 20 }}>
+            <Feather name="message-circle" size={24} color="#fff" />
+          </TouchableOpacity>
+
+          <TouchableOpacity style={{ marginBottom: 20 }}>
+            <Feather name="send" size={24} color="#fff" />
+          </TouchableOpacity>
+
+          <TouchableOpacity>
+            <Feather name="bookmark" size={24} color="#fff" />
+          </TouchableOpacity>
         </View>
 
-        {/* Caption */}
         <View
           style={{
             position: "absolute",
@@ -74,11 +88,11 @@ export default function ReelsScreen() {
             right: 16,
           }}
         >
-          <Text style={{ color: "#fff", fontSize: 16 }}>
-            yeawoooooooooooooooooooooooooooooo
+          <Text style={{ color: "#fff", fontSize: 16, marginBottom: 4 }}>
+            Kamu akan mendapatkan:
           </Text>
           <Text style={{ color: "#ddd", fontSize: 13 }}>
-            hikmah
+            Mendapatkan sertifikat dan keuntungan lainnya
           </Text>
         </View>
       </ImageBackground>
